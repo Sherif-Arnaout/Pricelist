@@ -5,7 +5,9 @@
     'description': 'Advanced Pricelist',
     'category': 'Sales',
     'author': 'Sherif Arnaout',
-    'license': 'AGPL-3',
+    'license': 'OPL-1',
+    "price": "25",
+    "currency": "EUR"
     'depends': ['base',
                 'product',
                 'sale',
