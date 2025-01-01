@@ -1,0 +1,62 @@
+<odoo>
+    <!-- Report Action -->
+    <record id="action_report_pricelist_wizard" model="ir.actions.report">
+        <field name="name">Pricelist Report Wizard</field>
+        <field name="model">pricelist.report.wizard</field>  <!-- The model of your wizard -->
+        <field name="report_type">qweb-pdf</field>  <!-- Can also be qweb-html if needed -->
+        <field name="report_name">pricelist.report_pricelist_document</field>  <!-- The template's XML ID -->
+        <field name="report_file">pricelist.report_pricelist_document</field>  <!-- Same as the template's XML ID -->
+        <field name="binding_model_id" ref="pricelist.model_pricelist_report_wizard"/> <!-- Bind it to your wizard model -->
+    </record>
+
+     <!-- Action to Open Wizard -->
+    <record id="action_pricelist_report_wizard" model="ir.actions.act_window">
+        <field name="name">Pricelist Report Wizard</field>
+        <field name="res_model">pricelist.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu Item (Optional) -->
+    <menuitem 
+        id="menu_pricelist_report_wizard"
+        name="Pricelist Report Wizard"
+        parent="sale.menu_sale_report"
+        action="action_pricelist_report_wizard"
+        sequence="30"/>
+        
+    <record id="action_report_pricelist" model="ir.actions.report">
+        <field name="name">PDF Pricelist</field>
+        <field name="model">product.pricelist</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pricelist.report_pricelist</field>
+        <field name="report_file">pricelist.report_pricelist</field>
+        <field name="binding_model_id" ref="product.model_product_pricelist"/>
+    </record>
+    <record id="action_pricelist_report" model="ir.actions.act_window">
+        <field name="name">Pricelist Reports</field>
+        <field name="res_model">product.pricelist</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="report_pricelist_xlsx" model="ir.actions.report">
+        <field name="name">XLSX Pricelist</field>
+        <field name="model">product.pricelist</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">pricelist.pricelist_xlsx</field>
+        <field name="report_file">pricelist.pricelist_xlsx</field>
+        <field name="binding_model_id" ref="product.model_product_pricelist"/>
+    </record>
+
+    <record id="action_pricelist_xlsx_report" model="ir.actions.report">
+        <field name="name">Pricelist Report</field>
+        <field name="model">pricelist.report.wizard</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">pricelist.pricelist_xlsx_report</field>
+        <field name="report_file">pricelist.pricelist_xlsx_report</field>
+        <field name="binding_model_id" ref="model_pricelist_report_wizard"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Pricelist Report - %s' % (object.pricelist_id.name)</field>
+    </record>
+
+</odoo>

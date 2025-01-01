@@ -1,0 +1,9 @@
+/* Make the field resizable */
+.resizable-draggable {
+    resize: both; /* Allows resizing horizontally and vertically */
+    overflow: auto; /* Ensures scrollbars appear when content overflows */
+    min-width: 200px; /* Minimum width */
+    min-height: 100px; /* Minimum height */
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    padding: 5px; /* Optional: Add padding for better appearance */
+}

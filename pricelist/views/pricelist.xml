@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- Inherit the Pricelist Form View -->
+  <record id="pricelist_inherit_view_form" model="ir.ui.view">
+    <field name="name">pricelist.inherit.view.form</field>
+    <field name="model">product.pricelist</field>
+    <field name="inherit_id" ref="product.product_pricelist_view" />
+    <field name="arch" type="xml">
+      <!-- Wrap 'currency_id' field in a group to reapply the string -->
+      <xpath expr="//field[@name='currency_id']" position="replace">
+        <group string="Pricelist Info">
+          <field name="currency_id" string="Currency" />
+          <field name="date_pricelist" string="Date" />
+          <field name="created_by" string="Created By" />
+        </group>
+      </xpath>
+      <!-- Add the 'created_by' field and other groups after 'currency_id' -->
+      <xpath expr="//field[@name='active']" position="after">
+        <group string="Add Pricelist Items">
+          <field name="products" string="Products" widget="many2many_tags" options="{'no_create': True}" class="form-control resizable-draggable"/>
+          <button name="create_pricelist_items" string="Add" type="object" class="btn btn-secondary me-2" />
+        </group>
+      </xpath>
+
+      <xpath
+        expr="//notebook/page[@name='pricelist_rules']/field[@name='item_ids']/tree/field[@name='date_end']"
+        position="after">
+        <field name="cost_price" string="Cost Price" optional="hide" />
+        <field name="list_price" string="List Price" optional="hide" />
+        <field name="unit_of_measure" string="UOM" optional="hide" />
+        <field name="sales_description" string="Product Desc." optional="hide" />
+        <field name="ar_description" string="AR Desc." optional="hide" />
+        <field name="en_description" string="EN Desc." optional="hide" />
+      </xpath>
+      <xpath
+        expr="//notebook/page[@name='pricelist_rules']/field[@name='item_ids']/tree/field[@name='name']"
+        position="after">
+        <field name="cost_price" string="Cost Price" optional="hide" />
+        <field name="list_price" string="List Price" optional="hide" />
+        <field name="unit_of_measure" string="UOM" optional="hide" />
+        <field name="sales_description" string="P.Desc" optional="hide" />
+        <field name="ar_description" string="AR.Desc" optional="hide" />
+        <field name="en_description" string="EN.Desc" optional="hide" />
+      </xpath>
+    </field>
+  </record>
+
+
+</odoo>

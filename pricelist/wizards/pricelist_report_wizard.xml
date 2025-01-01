@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Wizard Form View -->
+    <record id="pricelist_report_wizard_form" model="ir.ui.view">
+        <field name="name">Pricelist Report Wizard</field>
+        <field name="model">pricelist.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Pricelist Report" class="o_xxl_form_view">
+                <sheet>
+                    <!-- Pricelist Selection Section -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="text-primary">Pricelist Selection</h2>
+                            <div class="card bg-light p-3">
+                                <field name="pricelist_id" widget="many2one" options="{'no_create': True}" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filters Section -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h2 class="text-primary">Filters</h2>
+                            <div class="card bg-light p-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="product_category_id" class="form-label">Product Category</label>
+                                        <field name="product_category_id" widget="many2one" options="{'no_create': True}" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="min_price" class="form-label">Minimum Price</label>
+                                        <field name="min_price" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="max_price" class="form-label">Maximum Price</label>
+                                        <field name="max_price" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-6">
+                                        <label for="date_start" class="form-label">Start Date</label>
+                                        <field name="date_start" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="date_end" class="form-label">End Date</label>
+                                        <field name="date_end" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Field Visibility Section -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h2 class="text-primary">Field Visibility</h2>
+                            <div class="card bg-light p-3">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <field name="show_ar_description"/>
+                                        <label for="show_ar_description">Arabic Description</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <field name="show_en_description"/>
+                                        <label for="show_en_description">English Description</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <field name="show_sales_description"/>
+                                        <label for="show_sales_description">Sales Description</label>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-4">
+                                        <field name="show_cost_price"/>
+                                        <label for="show_cost_price">Cost Price</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <field name="show_list_price"/>
+                                        <label for="show_list_price">List Price</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <field name="show_unit_of_measure"/>
+                                        <label for="show_unit_of_measure">Unit of Measure</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+
+                <!-- Footer Buttons -->
+                <footer>
+                    <div class="d-flex justify-content-end">
+                        <button 
+                            string="Clear Filters" 
+                            type="object" 
+                            name="clear_filters" 
+                            class="btn btn-secondary me-2"/>
+                        <button 
+                            string="Preview Report" 
+                            type="object" 
+                            name="action_preview" 
+                            class="btn btn-outline-primary me-2"/>
+                        <button 
+                            string="Generate PDF Report" 
+                            type="object" 
+                            name="print_report" 
+                            class="btn btn-primary me-2"/>
+                        <button 
+                            string="Generate XLS Report" 
+                            type="object" 
+                            name="print_report_wizard" 
+                            class="btn btn-primary me-2"/>
+                        <button 
+                            string="Cancel" 
+                            special="cancel" 
+                            class="btn btn-outline-secondary"/>
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
