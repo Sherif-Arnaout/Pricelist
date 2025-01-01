@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_pricelist_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Pricelist Report: <t t-esc="doc.pricelist_id.name" />
+                        </h2>
+                        <table class="table table-bordered" style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th t-if="doc.show_ar_description">Arabic Description</th>
+                                    <th t-if="doc.show_en_description">English Description</th>
+                                    <th t-if="doc.show_sales_description">Sales Description</th>
+                                    <th>Price</th>
+                                    <th t-if="doc.show_cost_price">Cost Price</th>
+                                    <th t-if="doc.show_list_price">List Price</th>
+                                    <th t-if="doc.show_unit_of_measure">Unit of Measure</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.filtered_items" t-as="item">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="item.product_tmpl_id.name" />
+                                        </td>
+                                        <td t-if="doc.show_ar_description">
+                                            <t t-esc="item.ar_description" />
+                                        </td>
+                                        <td t-if="doc.show_en_description">
+                                            <t t-esc="item.en_description" />
+                                        </td>
+                                        <td t-if="doc.show_sales_description">
+                                            <t t-esc="item.product_tmpl_id.description_sale" />
+                                        </td>
+                                        <td t-if="item.compute_price == 'fixed'">
+                                            <t t-esc="item.fixed_price" />
+                                        </td>
+                                        <td t-if="item.compute_price == 'percentage'">
+                                            <t t-esc="item.product_tmpl_id.list_price - ((item.percent_price * item.product_tmpl_id.list_price) / 100)" />
+                                            <br/>
+                                            <t t-esc="item.percent_price" />
+% of <t t-esc="item.product_tmpl_id.list_price" />
+                                        </td>
+                                        <td
+                                            t-if="item.compute_price == 'formula' and item.base == 'list_price'">
+                                            <t
+                                                t-esc="item.product_tmpl_id.list_price - ((item.price_discount * item.product_tmpl_id.list_price) / 100) + item.price_surcharge" />
+    <br />
+                                            [<t t-esc="item.price_discount" /> % of <t
+                                                t-esc="item.product_tmpl_id.list_price" /> + <t
+                                                t-esc="item.price_surcharge" /> - Extra Fee] </td>
+                                        <td
+                                            t-if="item.compute_price == 'formula' and item.base == 'standard_price'">
+                                            <t
+                                                t-esc="item.product_tmpl_id.standard_price - ((item.price_discount * item.product_tmpl_id.standard_price) / 100) + item.price_surcharge" />
+    <br />
+                                            [<t t-esc="item.price_discount" /> % of <t
+                                                t-esc="item.product_tmpl_id.standard_price" /> + <t
+                                                t-esc="item.price_surcharge" /> - Extra Fee] </td>
+                                        <td t-if="doc.show_cost_price">
+                                            <t t-esc="item.product_tmpl_id.standard_price" />
+                                        </td>
+                                        <td t-if="doc.show_list_price">
+                                            <t t-esc="item.list_price" />
+                                        </td>
+                                        <td t-if="doc.show_unit_of_measure">
+                                            <t t-esc="item.product_tmpl_id.uom_id.name" />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div>
+                            <p>
+                                <strong>Filter Criteria:</strong>
+                            </p>
+                            <ul>
+                                <li t-if="doc.product_category_id">Category: <t t-esc="doc.product_category_id.name" />
+                                </li>
+                                <li t-if="doc.min_price">Minimum Price: <t t-esc="doc.min_price" />
+                                </li>
+                                <li t-if="doc.max_price">Maximum Price: <t t-esc="doc.max_price" />
+                                </li>
+                                <li t-if="doc.date_start">Start Date: <t t-esc="doc.date_start" />
+                                </li>
+                                <li t-if="doc.date_end">End Date: <t t-esc="doc.date_end" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
