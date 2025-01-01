@@ -19,7 +19,7 @@
         'reports/report_pricelist_document.xml',
         'wizards/pricelist_report_wizard.xml',
     ],
-    'images': ['static/description/thumbnail.png'],
+    'images': ['static/description/background.png'],
     'assets': {
         'web.assets_backend': [
             'pricelist/static/src/css/pricelist.css',
