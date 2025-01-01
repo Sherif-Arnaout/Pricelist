@@ -6,8 +6,6 @@
     'category': 'Sales',
     'author': 'Sherif Arnaout',
     'license': 'OPL-1',
-    "price": "25",
-    "currency": "EUR"
     'depends': ['base',
                 'product',
                 'sale',
@@ -32,4 +30,6 @@
     'application': True,
     'installable': True,
     'auto_install': False
+    "price": "10",
+    "currency": "EUR"
 }
