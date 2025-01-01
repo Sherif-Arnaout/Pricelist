@@ -1,7 +1,7 @@
 {
     'name': 'Product Pricelist',
     'version': '17.0.0.1',
-    'summary': 'Advanced Pricelist',
+    'summary': 'Easily share and print product prices with your customers without the need to create a quotation',
     'description': 'Advanced Pricelist',
     'category': 'Sales',
     'author': 'Sherif Arnaout',
