@@ -25,7 +25,7 @@
         ],
     },
     'images': [
-        'static/description/cover.png',  
+        'static/description/main_screenshot.png',  
     ],
     'demo': ['Demo'],
     'application': True,
