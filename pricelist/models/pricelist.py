@@ -12,14 +12,12 @@ class PriceList(models.Model):
         default=lambda self: self.env.user,
         readonly=True
     )
-
     products = fields.Many2many(
         'product.product',
         string='Products',
         domain=[('active', '=', True)],
         tracking=True
     )
-
     date_pricelist = fields.Date(string='Date', tracking=True)
 
     def create_pricelist_items(self):
