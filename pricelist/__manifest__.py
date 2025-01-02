@@ -24,7 +24,9 @@
             'pricelist/static/src/css/pricelist.css',
         ],
     },
-    'images': ['static/description/background.png'],
+    'images': [
+        'static/description/cover.png',  
+    ],
     'demo': ['Demo'],
     'application': True,
     'installable': True,
